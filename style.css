@@ -1,0 +1,128 @@
+
+@font-face {
+    font-family:'Decovar Regular24';
+    src:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/Decovar-VF.ttf');
+}
+body {
+    background: linear-gradient(to right, #acb6e5, #86fde8);
+}
+h1 {
+    margin: 0;
+    font-size: 5vw;
+    position: relative;
+    letter-spacing: 0.6rem;
+    transform: translateZ(0);
+    font-family: "Decovar Regular24";
+    font-variation-settings: 'SSTR' 1000, 'TSHR' 1000, 'wght' 1000;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: url(https://images.unsplash.com/photo-1488920873278-ad544bf71d62?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&s=7190e9fef514fef6cf42ce2e311b97ff);
+    background-size: 30%;
+    background-repeat: repeat;
+    mix-blend-mode: color-dodge;
+    text-shadow: 5px 5px 20px rgba(42, 67, 8, 0.4);
+    animation: grow 3s linear infinite;
+}
+
+h1::after {
+     content: attr(data-text);
+     position: absolute;
+     left: 0;
+     top: 0;
+     z-index: -1;
+     font-variation-settings: 'INLN' 0;
+     background: linear-gradient(to right, #03001e, #7303c0, #ec38bc, #fdeff9);
+     background-size: 30%;
+     background-repeat: repeat;
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+ mix-blend-mode: difference;
+ }
+@keyframes grow {
+    0% {
+        font-variation-settings: 'SSTR' 1000, 'TSHR' 1000, 'wght' 1000;
+    }
+
+    50% {
+        font-variation-settings: 'SSTR' 0, 'TSHR' 0, 'wght' 0;
+    }
+}
+.variable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: -1;
+}
+
+
+.open-multiple {
+    width: 600px;
+}
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+.tabs {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
+}
+.tab {
+    width: 100%;
+    color: white;
+    overflow: hidden;
+}
+.tab-label {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    background-image: url("https://www.transparenttextures.com/patterns/stardust.png"),
+    linear-gradient(
+            240deg,
+            rgba(164, 88, 255, 1) 0%,
+            rgba(53, 68, 255, 1) 40%,
+            rgba(10, 47, 158, 1) 80%
+    );
+    font-weight: bold;
+    cursor: pointer;
+}
+/* Icon */
+.tab-label:hover {
+    opacity: 0.8;
+}
+.tab-label:after {
+    content: "\276F";
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    transition: all 0.35s;
+    transform: rotate(270deg);
+}
+.tab-content {
+    max-height: 0;
+    padding: 0 1em;
+    color: #151025;
+    background: white;
+    transition: all 0.35s;
+}
+/* :checked */
+input:checked + .tab-label {
+    background: rgba(10, 47, 158, 1);
+}
+/* :tab open */
+input:checked + .tab-label:after {
+    transform: rotate(90deg);
+}
+input:checked ~ .tab-content {
+    max-height: 100vh;
+    padding: 2em;
+}
